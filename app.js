@@ -6,6 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var theresiachintiaherawatiRouter = require('./routes/theresiachintiaherawati');
+
+const mongoose = require("mongoose");
 
 var app = express();
 
@@ -17,6 +20,15 @@ app.use((req,res,next)=>{
   res.setHeader("Access-Control-Allow-Methods","GET, POST, PATCH, DELETE, OPTIONS");
   next();  
 });
+mongoose.connect(
+  "mongodb://localhost:27017/dbbuku"
+).then(()=>{
+  console.log("Connected to Database");
+}).catch((err)=>{
+  // console.error('App starting error:', err.stack);
+  console.log("Connection Failed");
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/pariwisata',theresiachintiaherawatiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
