@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const theresiachintiaherawatiController =
-require ("../controller/theresiachintiaherawatiController");
+require ("../controller/theresiachintiaherawatiController")
 
 router.get('/',theresiachintiaherawatiController.createpariwisata);
 
@@ -13,3 +13,5 @@ router.get('/:id',theresiachintiaherawatiController.deletepariwisata);
 router.get('/:id',theresiachintiaherawatiController.updatepariwisata);
 
 module.exports = router;
+
+//https://github.com/thereesiaaa/uts_theresiachintiaherawati.git
